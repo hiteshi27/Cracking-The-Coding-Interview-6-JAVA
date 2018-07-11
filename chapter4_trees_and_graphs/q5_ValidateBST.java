@@ -9,11 +9,11 @@ public class q5_ValidateBST {
 
 	public static void main(String[] args) {
 		/*
-		 * 			4
+		 * 		    4
 		 * 		    /\
 		 * 		   2  6
 		 * 		  /\  /\	
-		 *		 1 	3 4	7 
+		 *		 1 3 4	7 
 		 */
 
 		BinaryTree BT =new BinaryTree(4);
@@ -26,11 +26,11 @@ public class q5_ValidateBST {
 		node.right.right= BT.new Node(7);
 
 		/*
-		 * 			5
+		 * 		    5
 		 * 		    /\
 		 * 		   7  3
 		 * 		  /\  /\	
-		 *		 8 	7 1	4 
+		 *		 8 7 1	4 
 		 */
 		// BinaryTree BT =new BinaryTree(5);
 		//  BinaryTree.Node node = BT.root;
@@ -42,11 +42,11 @@ public class q5_ValidateBST {
 		// node.right.right= BT.new Node(4);
 
 		/*
-		 * 			5
+		 * 		    5
 		 * 		    /\
 		 * 		   3  7
 		 * 		  /\  /\	
-		 *		 2 	4 6	8 
+		 *		 2 4 6	8 
 		 */
 		// BinaryTree BT =new BinaryTree(5);
 		// BinaryTree.Node node = BT.root;
@@ -59,13 +59,13 @@ public class q5_ValidateBST {
 
 
 		/*
-		 * 			20
+		 * 		    20
 		 * 		    /\
 		 * 		   10 30
 		 * 		  /\   \	
 		 *		 2 11 	6
-		 *			\
-		 *			9 
+		 *			 \
+		 *			  9 
 		 */
 		// BinaryTree BT =new BinaryTree(20);
 		// BinaryTree.Node node = BT.root;
