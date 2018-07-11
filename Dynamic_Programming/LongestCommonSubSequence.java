@@ -31,6 +31,7 @@ public class LongestCommonSubSequence {
 
 
 	}
+	// 2 d array and 1 nested for loop
 	public static String LCSIterative2DArray(String str1, String str2){//O(n^2)
 		/*
 		 *     G X T X A Y B
@@ -81,7 +82,7 @@ public class LongestCommonSubSequence {
 				}
 				else if(adj[i][j]==(adj[i-1][j-1]+1)) {
 					lcs=str1.charAt(i-1)+lcs;
-//					System.out.println(str1.charAt(i-1));
+					//					System.out.println(str1.charAt(i-1));
 					i=i-1;
 				}
 
@@ -92,7 +93,9 @@ public class LongestCommonSubSequence {
 		System.out.print("length "+lcs.length());
 		return lcs;
 	}
-	public static String LCSIterative2ForLoops(String str1, String str2){//O(n^2)
+
+	// 2 nested for loops
+	public static String LCSIterative2ForLoops(String str1, String str2){//O(2n^2)
 		String lcs1="",lcs2="";
 
 
@@ -124,7 +127,7 @@ public class LongestCommonSubSequence {
 
 		return lcs1.length()>lcs2.length()?lcs1:lcs2;
 	}
-
+	//recursive
 	public static String LCSRecursive(String str1, String str2,int m, int n,String lcs){//O(2^n)
 		if(m==0)
 			return lcs;
