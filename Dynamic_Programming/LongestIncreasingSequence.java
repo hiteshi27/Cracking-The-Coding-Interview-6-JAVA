@@ -8,49 +8,46 @@ public class LongestIncreasingSequence {
 	public static void main(String[] args) {
 		int arr[]={10,22,9,33,21,50,41,60,80};
 
-		System.out.println("\nRecursive "+ LISIterative2Darray(arr));
+		System.out.println("\nIterative "+ LISIterative2Darray(arr));
+		System.out.println("\nRecursive "+ LISRecursive(arr,0,0));
 
 
 	}
-//	public static  int LISIterative(int[] arr,int start,int len){
-//		if(arr.length==0){
-//			return 0;
-//		}
-//		
-//		if(start>arr.length-1){
-//			return len;
-//		}
-//		
-//		
-//		if(start==0&&arr[start]<=arr[len]){
-//		
-//			System.out.println(arr[start]);
-//			 len+=1;
-//			return LISIterative(arr,start+1,len);
-//		}
-//	
-//		else if(arr[start]>arr[len]){
-//			len+=1;
-//			System.out.println(arr[start]);
-////			return 	len+=1;
-//		}
-//		len+=LISIterative(arr,start+1,len);
-//		
-//		return LISIterative(arr,start+1,len)?LISIterative(arr,start+1,len);
-//	}
-	public static  int LISIterative2Darray(int[] arr){
+	public static  int LISRecursive(int[] arr,int start,int len){//O(n^2)
+		
+		if(start>=arr.length)
+			return len;
+		int pos=start;
+		int tempLen=1;
+		System.out.print(" "+arr[start]);
+		for(int temp=start+1;temp<arr.length;temp++) {
+			if(arr[pos]<arr[temp]) {
+				tempLen+=1;
+				pos=temp;
+				System.out.print(" "+arr[temp]);
+			}
+			
+		}
+		System.out.print(" "+tempLen);
+		len=tempLen>len?tempLen:len;
+		System.out.print("\n");
+		len=LISRecursive(arr,start+1,len);
+
+		return len;
+	}
+	public static  int LISIterative2Darray(int[] arr){//O(n^2)
 		/*
-		*{10,22,9,33,21,50,41,60,80}
+		 *{10,22,9,33,21,50,41,60,80}
 		 */
-			int maxLen=0;
-			int len=0;
-			int pos=0;
+		int maxLen=0;
+		int len=1;
+		int pos=0;
 		for(int i=0;i<arr.length;i++) {
-			pos=i;len=0;
+			pos=i;len=1;
 			System.out.println();
 			System.out.print(arr[i]);
 			for(int j=i+1;j<arr.length;j++) {
-				
+
 				if(arr[pos]<arr[j]) {
 					len+=1;
 					pos=j;
@@ -61,7 +58,7 @@ public class LongestIncreasingSequence {
 				maxLen=len;
 			System.out.println(" len "+len);
 		}
-		
-	return maxLen;	
+
+		return maxLen;	
 	}
 }
