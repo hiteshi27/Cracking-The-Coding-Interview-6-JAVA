@@ -10,16 +10,16 @@ import java.util.Arrays;
 public class LongestIncreasingSequence {
 
 	public static void main(String[] args) {
-		int arr[]={10,22,11,12,33,21,50,41,60,90,13};
+		int arr[]={10,22,8,11,9,21,50,60,90,13};
 
 
 		System.out.println("\nRecursive "+ LISRecursive(arr,0,0));
 		System.out.println("\nIterative  n^2 "+ LISIterativeNsq(arr));
-		System.out.println("\nIterative nlogn with path "+ LISIterativeNlogNwithPath(arr));
+		System.out.println("\nIterative nlogn  "+ LISIterativeNlogN(arr));
 
 
 	}
-	public static  int LISIterativeNlogNwithPath(int[] arr){//O(nlogn)
+	public static  int LISIterativeNlogN(int[] arr){//O(nlogn)
 		int lengths[] = new int[arr.length];
 		//		int path[]=new int[arr.length];
 
@@ -50,12 +50,7 @@ public class LongestIncreasingSequence {
 			}
 
 		}
-		System.out.print("\n n logn : ");
-		for(int i=0;i<lengths.length;i++) {
-			if(lengths[i]!=-1)
-				System.out.print(" " +arr[lengths[i]]);
-		}
-
+	
 		return len;
 	}
 	public static int LISIterativeNsq(int arr[])
@@ -78,7 +73,7 @@ public class LongestIncreasingSequence {
 
 	for ( int i = 0; i < n; i++ )
 		lengths[i] = 1;
-
+		
 	//	 compare from start till ith
 	for ( int i = 1; i <n; i++ ) {
 		for ( int j = 0; j <= i; j++ ) {
@@ -91,13 +86,7 @@ public class LongestIncreasingSequence {
 			} //ith = most recent smallest+1
 		}
 	}
-			System.out.print("\n n^2 : ");
-	int i=1;
 	
-	for (  i = 1; i < n; i++ ) {
-		if(lengths[i-1]!=lengths[i])
-			System.out.print(" "+arr[i-1]);
-	}
 
 	return maxLen;
 	}
@@ -105,14 +94,22 @@ public class LongestIncreasingSequence {
 
 	public static int binarySearch(int arr[],int lengths[],int l,int r,int k){
 		int n=lengths.length;
-		int mid=0;
+		int mid=1;
 		while(r-l>1) {
+			
 			mid=l+(r-1)/2;
-			if(arr[lengths[mid]]>=k) {
-				r=mid;
-			}else {
-				l=mid;
+//			System.out.println(mid);
+//			System.out.println("l"+l);
+//
+//			System.out.println("r"+r);/
+
+			if(arr[lengths[mid]]>k) {
+				r=mid-1;
+			}else
+			{
+				l=mid+1;
 			}
+			
 
 		}
 
