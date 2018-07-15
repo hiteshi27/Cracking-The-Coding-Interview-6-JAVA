@@ -20,30 +20,38 @@ public class LongestPathInMatrix {
 	
 	System.out.println("\n longest path length :"+findLongestOverAll(mat));	
 	}
-	public static int getPath(int[][] mat,int i,int j,int[][] dist,int n) {
+	public static int getPath(int[][] mat,int i,int j,int[][] dist,int n) {//O(n^2) visits all elements only once 
+		System.out.print(" "+mat[i][j]);
 		if (i<0 || i>=n || j<0 || j>=n)
 			return 0;
 		if(dist[i][j]!=-1)
 			return dist[i][j];
-		
 		if(dist[i][j]<0) {
 		
 			
 			if(j<n-1&&mat[i][j]+1==mat[i][j+1]) {
 				return dist[i][j]=1+getPath(mat,i,j+1,dist,n);
+//				return 1+getPath(mat,i,j+1,dist,n);
 			}
 			if(i<n-1&&mat[i][j]+1==mat[i+1][j]) {
-				return dist[i][j]=1+getPath(mat,i+1,j,dist,n);
+				return dist[i][j]= 1+getPath(mat,i+1,j,dist,n);
+//				return 1+getPath(mat,i+1,j,dist,n);
+
 			}
 			if(i>0&&mat[i][j]+1==mat[i-1][j]) {
-				return dist[i][j]=1+getPath(mat,i-1,j,dist,n);
+				return dist[i][j]= 1+getPath(mat,i-1,j,dist,n);
+//				return 1+getPath(mat,i-1,j,dist,n);
+
 			}
 			if (j>0&&mat[i][j]+1==mat[i][j-1]) {
-				return dist[i][j]=1+getPath(mat,i,j-1,dist,n);
+				return dist[i][j]= 1+getPath(mat,i,j-1,dist,n);
+//				return 1+getPath(mat,i,j-1,dist,n);if we use this, its not O(n^2)
+
 			}
 		}
 		
-		return dist[i][j]=1;
+		return dist[i][j]= 1;
+//		return 1;
 	}
 	public static int findLongestOverAll(int mat[][]) {
 		int n=mat.length;
@@ -54,9 +62,12 @@ public class LongestPathInMatrix {
 		}
 		for(int k=0;k<n;k++) {
 			for(int l=0;l<n;l++) {
+				System.out.println("\n");
+
 					maxLen=max(maxLen,getPath(mat,k,l,dist,n));
 			}	
 		}
+		
 		return maxLen;
 	}
 	public static int max(int x,int y) {
