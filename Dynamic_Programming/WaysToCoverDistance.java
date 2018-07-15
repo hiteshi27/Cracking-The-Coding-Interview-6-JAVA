@@ -9,8 +9,12 @@ public class WaysToCoverDistance {
 		long ways = getWays(n, c);
 
 		System.out.print("\n ways : " +ways);
+		
+		 ways = getWaysRecursion(n, c);
+
+		System.out.print("\n ways : " +ways);
 	}
-	static long getWays(long n, long[] c) {
+	public static long getWays(long n, long[] c) {//O(n) time , O(m) space
 		/*
 		 *  0 0 0 1 2 3 4 5 
 		 *  0 0 1 1 2 4 7 13
@@ -32,6 +36,14 @@ public class WaysToCoverDistance {
 
 		return ways[(int)n+3-1];
 	}
-
+	public static long getWaysRecursion(long n, long[] c) {
+		if(n<0) {
+			return 0;
+		}
+		if(n==0) {
+			return 1;
+		}
+	return getWaysRecursion(n-1,c)+getWaysRecursion(n-2,c)+getWaysRecursion(n-3,c);
+	}
 
 }
